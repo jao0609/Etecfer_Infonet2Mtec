@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar alunos</title>
+</head>
+<body>
+    
+    <h1 style="text-align: center;">lista de alunos</h1>
+    <h3 style="text-align:center;">
+        <a href="/alunos/criar"></a>
+    </h3>
+        <table border="1" align="center"></table>
+            <tr>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Telefone</th>
+                <th>RA</th>
+                <th colspan="2">Ações</th>
+            </tr>
+            <tr th:each="aluno : $(alunos)">
+                <td th:text="$(aluno.nomeAluno)">*</td>
+                <td th:text="$(aluno.emailAluno)">*</td>
+                <td th:text="$(aluno.telefoneAluno)">*</td>
+                <td th:text="$(aluno.raAluno)">*</td>
+                <td>
+                    <a href="@{/aluno/editar/{id}(id=${aluno.idAluno})}">Editar</a>
+                    <a href="@{/aluno/excluir/{id}(id=${aluno.idAluno})}">Excluir</a>
+                </td>
+            </tr>
+</body>
+</html>
