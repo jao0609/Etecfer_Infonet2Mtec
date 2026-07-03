@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/etecfer")
 
-public class EtecFerControler {
+public class EtecFerController {
     
     @GetMapping
     public String index(Model model){
