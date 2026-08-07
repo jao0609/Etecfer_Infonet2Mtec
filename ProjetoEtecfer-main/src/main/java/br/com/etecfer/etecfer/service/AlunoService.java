@@ -10,8 +10,8 @@ import br.com.etecfer.etecfer.repository.AlunoRepository;
 
 @Service
 public class AlunoService {
-
-    //injeção de dependência para a classe aluno
+    
+    //Injeção de dependencia do repositório para a classe aluno
     @Autowired
     private AlunoRepository alunoRepository;
 
@@ -20,12 +20,12 @@ public class AlunoService {
         return alunoRepository.save(aluno);
     }
 
-    //Método para listar todos os alunos
+    // Método para listar todos os alunos
     public List<Aluno> findAll(){
         return alunoRepository.findAll();
     }
 
-    //Método para excluir um aluno pelo id
+    // Método para excluir um aluno pelo id
     public void deleteById(Integer id){
         alunoRepository.deleteById(id);
     }
@@ -34,6 +34,4 @@ public class AlunoService {
     public Aluno findById(Integer id){
         return alunoRepository.findById(id).orElse(null);
     }
-
-    
 }

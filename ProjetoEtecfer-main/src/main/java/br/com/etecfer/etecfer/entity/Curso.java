@@ -9,28 +9,25 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
- 
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
 @Getter
 public class Curso {
-    
-    //DEfinição dos atributos da entidade curso
+      //Classe de modelagem
+    // definição dos atributos da entidade aluno 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idCurso;
-    
-    @Column(nullable = false,length = 40)
+
+    @Column(nullable = false, length = 40)
     private String nomeCurso;
 
-    @Column(length = 10)
+    @Column(length = 30)
     private String periodoCurso;
 
-    @Column(nullable = false,length = 15)
+    @Column(nullable = false, length = 11)
     private String chCurso;
-
-
-      
 }

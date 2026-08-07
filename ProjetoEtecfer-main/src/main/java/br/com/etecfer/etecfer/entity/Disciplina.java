@@ -9,26 +9,25 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
- 
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
 @Getter
 public class Disciplina {
-    
-    //DEfinição dos atributos da entidade Aluno
+      //Classe de modelagem
+    // definição dos atributos da entidade Disciplina
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idDisciplina;
-    
-    @Column(nullable = false,length = 40)
+
+    @Column(nullable = false, length = 40)
     private String nomeDisciplina;
 
-    @Column(length = 3)
+    @Column(length = 5)
     private String siglaDisciplina;
 
-    @Column(nullable = false)
-    private String chDisciplina;
-      
+    @Column(length = 20)
+    private Integer chDisciplina;
 }
