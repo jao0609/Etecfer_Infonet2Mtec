@@ -8,7 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.etecfer.etecfer.entity.Aluno;
+import br.com.etecfer.etecfer.entity.Curso;
 import br.com.etecfer.etecfer.service.AlunoService;
+import br.com.etecfer.etecfer.service.CursoService;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +24,9 @@ import org.springframework.web.bind.annotation.GetMapping;
         //Injeção de dependência da service para a classe aluno
         @Autowired
         private AlunoService alunoService;
+
+        @Autowired
+        private CursoService cursoService;
 
         //Método para salvar um aluno
         @PostMapping("/salvar")
@@ -43,6 +48,8 @@ import org.springframework.web.bind.annotation.GetMapping;
         @GetMapping("/criar")
         public String criarForm(Model model) {
             model.addAttribute("aluno", new Aluno());
+            List<Curso> cursos = cursoService.findAll();
+            model.addAttribute("cursos", cursos);
             return "aluno/formularioAluno";
         }
 
@@ -58,11 +65,12 @@ import org.springframework.web.bind.annotation.GetMapping;
         public String editarForm(@PathVariable("id") Integer id, Model model) {
             Aluno aluno = alunoService.findById(id);
             model.addAttribute("aluno", aluno);
+            List<Curso> cursos = cursoService.findAll();
+            model.addAttribute("cursos", cursos);
             return "aluno/formularioAluno";
         }
+
+
+
         
-        
-        
-        
-        
-}
+    }

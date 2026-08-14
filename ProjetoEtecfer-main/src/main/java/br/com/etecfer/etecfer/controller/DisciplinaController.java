@@ -7,8 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import br.com.etecfer.etecfer.entity.Curso;
 import br.com.etecfer.etecfer.entity.Disciplina;
+import br.com.etecfer.etecfer.entity.Professor;
+import br.com.etecfer.etecfer.service.CursoService;
 import br.com.etecfer.etecfer.service.DisciplinaService;
+import br.com.etecfer.etecfer.service.ProfessorService;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +27,12 @@ import org.springframework.web.bind.annotation.GetMapping;
         @Autowired
         private DisciplinaService disciplinaService;
 
+        @Autowired
+        private CursoService cursoService;
+
+        @Autowired
+        private ProfessorService professorService;
+
         //Método para salvar um disciplina
         @PostMapping("/salvar")
         public String salvar(@ModelAttribute Disciplina disciplina) {
@@ -31,10 +41,10 @@ import org.springframework.web.bind.annotation.GetMapping;
             return "redirect:/disciplinas/listar";
         }
 
-        //Método para listar todos os Disciplinas
+        //Método para listar todos as Disciplinas
         @GetMapping("/listar")
         public String listar(Model model) {
-            List <Disciplina> disciplinas = disciplinaService.findAll();
+             List <Disciplina> disciplinas = disciplinaService.findAll();
             model.addAttribute("disciplinas", disciplinas);
             return "disciplina/listarDisciplina.html";
         }
@@ -43,6 +53,8 @@ import org.springframework.web.bind.annotation.GetMapping;
         @GetMapping("/criar")
         public String criarForm(Model model) {
             model.addAttribute("disciplina", new Disciplina());
+            List<Curso> cursos = cursoService.findAll();
+            model.addAttribute("cursos", cursos);
             return "disciplina/formularioDisciplina";
         }
 
@@ -58,6 +70,10 @@ import org.springframework.web.bind.annotation.GetMapping;
         public String editarForm(@PathVariable("id") Integer id, Model model) {
             Disciplina disciplina = disciplinaService.findById(id);
             model.addAttribute("disciplina", disciplina);
+            List<Curso> cursos = cursoService.findAll();
+            model.addAttribute("cursos", cursos);
+            List<Professor> professores = professorService.findAll();
+            model.addAttribute("professores", professores);
             return "disciplina/formularioDisciplina";
         }
         
