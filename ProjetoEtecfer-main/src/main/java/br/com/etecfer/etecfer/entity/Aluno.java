@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -45,4 +46,10 @@ public class Aluno {
     @ManyToOne
     @JoinColumn(name = "idCurso_fk")
     private Curso curso;
+
+    @Lob 
+    private byte[] fotoaluno;
+
+    @Column (length = 30)
+    private String tipofoto;
 }
